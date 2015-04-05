@@ -116,15 +116,18 @@
 - (void)leftAnimation {
     [CATransaction begin];
     [CATransaction setAnimationDuration:ANIMATION_DURATION];
-
-    for (CALayer *cubeLayer in self.left1) {
+    
+    [self.left1 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, -ANIMATION_DISTANCE, 0, 0);
-    }
-    for (CALayer *cubeLayer in self.left3) {
+    }];
+    
+    [self.left3 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, ANIMATION_DISTANCE, 0, 0);
-    }
+    }];
     
     [CATransaction commit];
     [self performSelector:@selector(frontAnimation) withObject:nil afterDelay:ANIMATION_DURATION];
@@ -133,15 +136,19 @@
 - (void)frontAnimation {
     [CATransaction begin];
     [CATransaction setAnimationDuration:ANIMATION_DURATION];
-    for (CALayer *cubeLayer in self.front1) {
+    
+    [self.front1 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, 0, 0, -ANIMATION_DISTANCE);
-    }
-    for (CALayer *cubeLayer in self.front3) {
+    }];
+    
+    [self.front3 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, 0, 0, ANIMATION_DISTANCE);
-
-    }
+    }];
+    
     [CATransaction commit];
     [self performSelector:@selector(topAnimation) withObject:nil afterDelay:ANIMATION_DURATION];
 }
@@ -149,14 +156,19 @@
 - (void)topAnimation {
     [CATransaction begin];
     [CATransaction setAnimationDuration:ANIMATION_DURATION];
-    for (CALayer *cubeLayer in self.top1) {
+    
+    [self.top1 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, 0, ANIMATION_DISTANCE, 0);
-    }
-    for (CALayer *cubeLayer in self.top3) {
+    }];
+    
+    [self.top3 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, 0, -ANIMATION_DISTANCE, 0);
-    }
+    }];
+    
     [CATransaction commit];
     [self performSelector:@selector(leftReturnBack) withObject:nil afterDelay:ANIMATION_DURATION];
 }
@@ -165,15 +177,17 @@
     [CATransaction begin];
     [CATransaction setAnimationDuration:ANIMATION_DURATION];
     
-    for (CALayer *cubeLayer in self.left1) {
+    [self.left1 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, ANIMATION_DISTANCE, 0, 0);
-
-    }
-    for (CALayer *cubeLayer in self.left3) {
+    }];
+    
+    [self.left3 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, -ANIMATION_DISTANCE, 0, 0);
-    }
+    }];
     
     [CATransaction commit];
     [self performSelector:@selector(frontReturnBack) withObject:nil afterDelay:ANIMATION_DURATION];
@@ -183,15 +197,18 @@
     [CATransaction begin];
     [CATransaction setAnimationDuration:ANIMATION_DURATION];
     
-    
-    for (CALayer *cubeLayer in self.front1) {
+    [self.front1 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, 0, 0, ANIMATION_DISTANCE);
-    }
-    for (CALayer *cubeLayer in self.front3) {
+    }];
+    
+    [self.front3 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, 0, 0, -ANIMATION_DISTANCE);
-    }
+    }];
+
     [CATransaction commit];
     [self performSelector:@selector(topReturnBack) withObject:nil afterDelay:ANIMATION_DURATION];
 }
@@ -200,16 +217,19 @@
     [CATransaction begin];
     [CATransaction setAnimationDuration:ANIMATION_DURATION];
     
-    for (CALayer *cubeLayer in self.top1) {
+    [self.top1 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, 0, -ANIMATION_DISTANCE, 0);
-    }
-    for (CALayer *cubeLayer in self.top3) {
+    }];
+    
+    [self.top3 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CALayer *cubeLayer = obj;
         CATransform3D transform = cubeLayer.sublayerTransform;
         cubeLayer.sublayerTransform = CATransform3DTranslate(transform, 0, ANIMATION_DISTANCE, 0);
-    }
-    [CATransaction commit];
+    }];
     
+    [CATransaction commit];
 }
 
 - (CGFloat)cubeDistance {
